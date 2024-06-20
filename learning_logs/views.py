@@ -31,7 +31,7 @@ def new_topic(request: HttpRequest):
         form = TopicForm()
     else:
         # Dados de POST submetidos; processa os dados
-        form = TopicForm(request)
+        form = TopicForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('topics')) #Esse reverse pega o name que você definiu no arquivo urls
