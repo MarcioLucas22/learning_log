@@ -11,6 +11,7 @@
         <li>
             <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!-- Esse "|" quer dizer que vai fazer um filtro -->
             <p>{{ entry.text | linebreaks}}</p>
+            <p><a href="{% url 'edit_entry' entry.id %}">Editar anotação</a></p>
         </li>
         {% empty %}
         <li>Não há registros no momento.</li>
