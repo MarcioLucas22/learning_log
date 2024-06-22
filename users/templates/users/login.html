@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+    {% if form.errors %}
+        <p>Seu login e senha estão incorretos. Tente novamente.</p>
+    {% endif %}
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- Não precisa colocar os inputs de login e senha pois o próprio Django faz isso -->
+        <button name="submit"></button>
+        <input type="hidden" name="next" value="{% url 'index' %}"> <!-- Aqui deve ter esse input (obrigatóriamente pq a view do django requer esse input) que indica pra qual página é pra ir após a autenticação -->
+    </form>
+
+{% endblock content %}
